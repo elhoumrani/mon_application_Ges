@@ -1,0 +1,59 @@
+{% extends 'baseA.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}<title>Ajout</title>{% endblock %}
+</head>
+<body>
+<div class="content">
+
+    <div class="main-header"> 
+        {% block texte %}        
+        <div class="text">
+            <h4>Apprenants</h4>
+            <span>Gestioncaisse</span>
+        </div>
+        {% endblock %}
+
+    </div>
+    
+    <main class="main">
+        {% block forms %}
+        <div class="forms">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div style="text-align: center; margin-bottom: 18px;">Enregistrer un apprenant</div>
+  
+                <div class="form-group">
+                    <label for="{{ form.nom.id_for_label }}">{{ form.nom.label }}</label><br>
+                    {{ form.nom }}
+                </div>
+        
+                <div class="form-group">
+                    <label for="{{ form.prenom.id_for_label }}">{{ form.prenom.label }}</label><br>
+                    {{ form.prenom }}
+                </div>
+        
+                <div class="form-group">
+                    <label for="{{ form.date_naissance.id_for_label }}">{{ form.date_naissance.label }}</label><br>
+                    {{ form.date_naissance }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.sexe.id_for_label }}">{{ form.sexe.label }}</label><br>
+                    {{ form.sexe }}
+                </div><br>
+                <button type="submit" class="ajout">Ajouter</button>
+                <button type="reset" class="annuler">annuler</button>
+            </form>
+        </div>
+        {% endblock %} 
+    </main>
+</div>
+
+</body>
+</html>

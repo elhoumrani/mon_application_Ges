@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}<title>Payement</title>{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/acceuil.css' %}">
+</head>
+<body>
+    <div class="content">
+
+        {% block texte %}
+        <div class="text">
+            <h4>Payement</h4>
+            <span>Gestioncaisse</span>
+        </div> 
+
+        {% endblock %}
+
+        {% block add %} 
+         <a href="{% url 'effectuer_paye' %}">
+            <img id="btn-add" width="20" height="20" src="{% static 'img/Ellipse 1 (2).png' %}" alt="">
+        </a>
+        {% endblock %}
+
+        {% block main %}  
+        <main class="main">
+            <div class="tab">
+                <p style="text-align: left; font-weight: 700;  margin-top: 12px;">Payement effectué</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Inscription Id</th>
+                            <th>Montant</th>
+                            <th>Motif</th>
+                            <th>Date payement</th>
+                            <th>Reçu</th>
+                            <th>Caissier</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for list in liste %}
+                        <tr>
+                            <td>{{list.inscription}}</td >
+                            <td>{{list.montant}}</td>
+                            <td>{{ list.motif }}</td>
+                            <td>{{list.date_paiement}}</td >
+                            <td>{{list.numero_recu}}</td>
+                            <td>{{list.utilisateur.username}}</td>
+                        </tr>
+                        {% endfor %}
+                    
+                    </tbody>
+                </table>
+            </div>   
+        </main>
+        {% endblock %}
+        
+    </div>
+    
+</body>
+</html>

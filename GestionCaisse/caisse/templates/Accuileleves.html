@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}<title>Apprenants</title>{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/acceuil.css' %}">
+</head>
+<body>
+    <div class="content">
+
+        {% block texte %}  
+        <div class="text">
+            <h4>Formations</h4>
+            <span>Gestioncaisse</span>
+        </div>
+        {% endblock %}
+
+        {% block add %} 
+        <div class="dropdown">
+            <img id="btn-add" width="20" height="20" src="{% static 'img/Ellipse 1 (2).png' %}" alt="">
+            <div class="dropdown-content">
+                <a href="{% url 'ajouter_inscription' %}">inscription</a>
+                <a href="{% url 'ajouter_apprenant' %}">eleevs</a>
+            </div>
+        </div>
+
+        
+       {% endblock %}
+       
+        {% block main %}  
+        <main class="main">
+            <div class="tab">
+                <p style="text-align: left; font-weight: 700;  margin-top: 12px;">Apprenants de la 3eme</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Date naissance</th>
+                            <th>Sexe</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for list in liste %}
+                        <tr>
+                            <td>{{ list.matricule}}</td>
+                            <td>{{ list.nom }}</td>
+                            <td>{{ list.prenom }}</td>
+                            <td>{{ list.date_naissance }}</td>
+                            <td>{{ list.sexe }}</td>
+                        </tr>
+                        {% endfor %}
+                    
+                    </tbody>
+                </table>
+            </div>   
+        </main>
+        {% endblock %}
+        
+    </div>
+    
+</body>
+</html>

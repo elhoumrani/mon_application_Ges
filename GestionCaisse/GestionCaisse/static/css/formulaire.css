@@ -1,0 +1,179 @@
+body{
+    margin: 0;
+    font-family:"Arial", "Helvetica", "sans-serif";
+    }
+
+.content {
+    margin: 12px 4px ;
+}
+    
+.sidebar {
+        position: fixed; /* Reste fixe à gauche */
+        /* Ajustez à la hauteur de .main-header */
+        left: 0;
+        margin-left: 4px;
+        margin-top: 48px;
+        background-color: rgba(75, 77, 160, 1);
+        border-radius: 0 40px 8px 0;
+        min-height: 100vh ; /* Ajustez pour la hauteur de l'en-tête */
+        z-index: 100; /* Au-dessus des éléments non fixes */
+    }
+.sidebar ul {
+    margin-top: 20px;
+
+}
+
+.sidebar a {
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 32px;
+}
+.logo {
+    display: block;
+    margin: 6px 19px;
+}
+.logo-second {
+    display: block;
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.img-li {
+    position: absolute;
+   
+}
+li {
+    list-style: none;
+    padding: 8px;
+    margin-left: 10px;
+}
+
+.main {
+    margin-left: 250px; /* Ajustez pour la largeur de la sidebar */
+    margin-top: 50px; /* Pour éviter de cacher sous l'en-tête */
+    z-index: 1; /* Inférieur aux éléments fixes */
+    position: relative; /* Nécessaire pour le z-index */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-header {
+    position: fixed; /* Reste fixe en haut */
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 67px;
+    background-color: whitesmoke;
+    z-index: 1000; /* Au-dessus de tout */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 88px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .5);
+}
+
+.text {
+    margin-left: 8px;
+}
+
+.text h4 {
+    margin-top: 8px;
+    margin-bottom: 4px;  
+}
+.text span {
+    margin-top: 0;
+    margin-bottom: 120px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: rgba(75, 77, 160, 1);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: rgba(75, 77, 160, 1);
+}
+
+.compte {
+    margin-right: 8px;
+}
+
+
+.forms {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 80px;
+}
+
+.form-group {
+    margin-bottom: 2px; /* Espace entre les champs */
+  
+}
+
+label {
+    display: block; /* Affiche les labels comme des blocs */
+    margin-bottom: 0px; /* Espace entre le label et le champ */
+}
+
+input, select  {
+    margin-bottom: 2px;
+    width: 230px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background-color: rgba(217, 217, 217, 0.457);
+    border: 1px solid #f1f1f1;
+}
+
+
+input:focus {
+    outline: 1px solid rgba(52, 54, 135, 1);
+}
+
+.ajout, .annuler {
+    background-color: rgba(52, 54, 135, 1);
+    padding: 6px 10px;
+    width: 95px;
+    color: #fff;
+    border-radius: 8px;
+    border: 1px solid #f1f1f1;
+    margin-top: 10px; /* Espace au-dessus des boutons */
+}

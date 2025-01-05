@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}<title>Formations</title>{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/acceuil.css' %}">
+</head>
+<body>
+    <div class="content">
+
+        {% block texte %}  
+        <div class="text">
+            <h4>Formations</h4>
+            <span>Gestioncaisse</span>
+        </div>
+        {% endblock %}
+
+        {% block add %} 
+        <a href="{% url 'ajouter_classe' %}">
+           <img id="btn-add" width="20" height="20" src="{% static 'img/Ellipse 1 (2).png' %}" alt="">
+       </a>
+       {% endblock %}
+       
+        {% block main %}  
+        <main class="main">
+            <div class="tab">
+                <p style="text-align: left; font-weight: 700;  margin-top: 12px;">Formations disponibles</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Niveau</th>
+                            <th>libelé</th>
+                            <th>Cycle</th>
+                            <th>Frais Scolarite (FCFA)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for list in liste %}
+                        <tr>
+                            <td>{{ list.id }}</td >
+                            <td>{{ list.niveau }}</td>
+                            <td>{{ list.libele }}</td>
+                            <td>{{ list.cycle }}</td>
+                            <td>{{ list.frais_scolarite }}</td>
+                        </tr>
+                        {% endfor %}
+                    
+                    </tbody>
+                </table>
+            </div>   
+        </main>
+        {% endblock %}
+        
+    </div>
+    
+</body>
+</html>
