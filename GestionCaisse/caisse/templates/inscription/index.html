@@ -1,0 +1,99 @@
+{% extends 'base/base1.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block titre %}<title>Inscription</title>{% endblock %}
+    
+</head>
+<body>
+    <div class="content">
+
+        {% block ajouter %} 
+            <a href="{% url 'inscription_create' %}"><img src="{% static '/img/Ellipse 1 (2).png' %}"></a>
+        {% endblock %}
+    
+            {% block title %} Inscription du compte de l'année en cours {{ list.annee_scolaire }}
+           <div>
+            <form action="" style="margin-top: 8px;">
+                 <select name="formation" id="searchSelect" 
+                 style="padding:  8px 10px;
+                 border: 1px solid #ccc;
+                 border-radius: 4px;
+                 font-size: 16px;
+                 background-color: #fff;
+                 cursor: pointer;
+                 outline: none;
+                 transition: border-color 0.3s ease;">
+                    <option value=""></option>
+                    {% for elt in classe %}
+                    <option value="{{elt.libele}}">{{ elt.libele }}</option>
+                    {% endfor %}
+                </select>
+
+                <select name="statut" id="searchSelect" 
+                style="padding:  8px 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 16px;
+                background-color: #fff;
+                cursor: pointer;
+                outline: none;
+                transition: border-color 0.3s ease;">
+                    <option value=""></option>
+                    <option value="Non Inscrit">Non Inscrit</option>
+                    <option value="Inscrit">Inscrit</option>
+                    <option value="Terminé">Terminé</option>
+                </select>
+                <button type="submit"
+                style="border: none;
+                border-radius: 4px;
+                padding: 8px 12px;
+                background-color: rgba(75, 77, 160, 1);
+                color: #fff;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;">
+                    recherche
+                </button>
+            </form>
+           </div>
+           {% endblock %}
+        {% block contenu %} 
+
+            <div class="tab">
+                <p style="text-align: left; font-weight: 700;  margin-top: 4px; margin-bottom: 6px;"></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Eleve</th>
+                            <th>Classe</th>
+                            <th>Année Scolaire</th>
+                            <th>Versé</th>
+                            <th>Reste</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for elt in inscrit %}
+                        <tr>
+                            <td>{{ elt.list.eleve}}</td>
+                            <td>{{ elt.list.classe }}</td>
+                            <td>{{ elt.list.annee_scolaire }}</td>
+                            <td>{{ elt.paye }}</td>
+                            <td>{{ elt.reste }}</td>
+                            <td>{{ elt.list.statut }}</td>
+                            <td><a href="{% url 'inscription_edit' id=elt.list.id %}"><i class="fas fa-edit"></i></a> / <a href="#"><i class="fas fa-trash-alt"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                    
+                    </tbody>
+                </table>
+            </div>   
+        </main>
+        {% endblock %}    
+</body>
+</html>

@@ -16,6 +16,7 @@
                     <form  method="POST">
                         {% csrf_token %}
                         <div class="log">Login</div>
+                        
                         <p>{{ msg }}</p>
                         <div class="email">
                             <input type="text" name="username" placeholder="entrez votre nom">
@@ -25,7 +26,7 @@
                         </div>
                         <div class="btn">
                             <button class="btn-connecter">Se connecter</button>
-                            <a href="acceuil.html">Mot de passe oublié ?</a>
+                            <a href="{% url 'forgot_pwd' %}">Mot de passe oublié ?</a>
                         </div>
                       
                     </form>

@@ -26,6 +26,14 @@ SECRET_KEY = 'django-insecure-x+io_#*c7w$ysh1=epul+)*%y$)jx0ij^m2@=#@ggg4$*s-h$9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+import pdfkit
+
+# Spécifiez le chemin vers wkhtmltopdf
+# Ajoutez la configuration à pdfkit
+config = pdfkit.configuration(wkhtmltopdf="C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe")
+
+
+
 ALLOWED_HOSTS = []
 
 
@@ -109,10 +117,14 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+LOGIN_URL = 'acceuil'
+LOGOUT_REDIRECT_URL = 'acceuil'
+LOGIN_REDIRECT_URL = 'acceuil'
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'En-us'
 
 TIME_ZONE = 'UTC'
 
@@ -133,3 +145,12 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'abdoulayeattamouyoussouf@gmail.com'
+EMAIL_HOST_PASSWORD = 'yuho sekf jtft dggt'

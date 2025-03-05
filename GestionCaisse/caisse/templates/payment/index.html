@@ -1,0 +1,92 @@
+{% extends 'base/base1.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block titre %}<title>Payement</title>{% endblock %}
+</head>
+<style>
+    .print-link {
+    text-decoration: none;
+    color: rgb(31, 29, 29);
+    margin-left: 10px;
+    }
+
+    .print-link:hover {
+        color: #007bff;
+        transition: color 0.3s;
+    }
+
+    .edit, .delete {
+            text-decoration: none;
+            color: rgb(31, 29, 29);
+            margin-left: 10px;
+        }
+    .edit:hover, .delete:hover {
+            color: #007bff;
+            transition: color 1.5s ease;
+        }
+</style>
+<body>
+
+    <div class="content">
+
+        {% block form %} 
+        <form action="" method="get">
+            <input type="search" name="recherche" placeholder="rechercher">
+            <input type="submit" name="" id="rech" value="rechercher">
+        </form>
+        {% endblock %}
+        
+        {% block ajouter %} 
+            <a href="{% url 'payment_create' %}"><img src="{% static '/img/Ellipse 1 (2).png' %}"></a>
+        {% endblock %}
+
+        {% block title %} Payement {% endblock %}
+        {% block contenu %}  
+            <div class="tab">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Inscription</th>
+                            <th>Montant</th>
+                            <th>Motif</th>
+                            <th>Date payement</th>
+                            <th>Caissier</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for list in liste %}
+                        <tr>
+                            <td>{{list.inscription}}</td>
+                            <td>{{list.montant}}</td>
+                            <td>{{ list.motif }}</td>
+                            <td>{{list.date_paiement}}</td>
+                            <td>{{list.utilisateur.username}}</td>
+                            <td>
+                                <a href="{% url 'payment_edit' id=list.id %}" class="edit" style="text-decoration: none; cursor: pointer; margin-right: 2px;">
+                                    <i class="fas fa-edit" style="color: black;"></i>
+                                </a> 
+                                <a href="{% url 'pdf_generate' id=list.id %}" target="_blank" class="print-link" style="text-decoration: none;">
+                                    <i class="fas fa-print" style="color: black;"></i> 
+                                </a>
+                                <a href="{% url 'payment_delete' id=list.id %}" class="delete" style="text-decoration: none; margin-left: 2px;">
+                                    <i class="fas fa-trash-alt" style="color: black;"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    
+                    </tbody>
+                </table>
+            </div>   
+        {% endblock %}
+        
+    </div>
+
+ 
+</body>
+</html>
